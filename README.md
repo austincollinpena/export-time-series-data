@@ -44,11 +44,7 @@ To get the sheet integration to work, you should update two variables: ```url```
 
 #### Three: If You Should Clear The Sheet
 
-Big queries over long periods of time tend to run past the 30 minute timeout window.
-
-You can run the script multiple times over different time periods to get your data.
-
-Keep these two variables ```false``` in order to just keep writing data.
+Handle clearing the sheet or adding column headers here:
 
 ```js
 var THE_SCRIPT_CLEAR_THE_CONTENTS_OF_THE_SHEET_CONTENTS = false;

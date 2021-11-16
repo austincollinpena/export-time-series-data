@@ -53,16 +53,7 @@ function main() {
             if (ADD_COLUMN_HEADERS) {
                 sheet.appendRow(columnNamesAsArray);
             }
-            var rows = report.rows();
-            while (rows.hasNext()) {
-                var currentRowArray = [];
-                var row = rows.next();
-                columnNamesAsArray.map(function (name) {
-                    var currentColumn = row[name];
-                    currentRowArray.push(currentColumn);
-                });
-                sheet.appendRow(currentRowArray);
-            }
+            report.exportToSheet(sheet);
         }
     }
 }
