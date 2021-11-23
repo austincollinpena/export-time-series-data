@@ -4,17 +4,24 @@ var THE_SCRIPT_CLEAR_THE_CONTENTS_OF_THE_SHEET_CONTENTS = false;
 // Should the script add the column headers, or just the data?
 var ADD_COLUMN_HEADERS = false;
 
+// This is the start date for the report in YYYYMMDD format
+var startDate = "20211101"
+
+// The end date is defined as "Today" or whenever the script runs
+var endDate = new Date()
 
 
 function main() {
+    var timeZone = AdsApp.currentAccount().getTimeZone();
+    var properlyFormattedTodayDate = Utilities.formatDate(endDate, timeZone, 'YYYYMMdd');
     var QUERIES = [
         {
-            "select": "SELECT CampaignName, Cost",
+            "select": "SELECT CampaignName, Cost, Date",
             "from": "FROM CAMPAIGN_PERFORMANCE_REPORT",
             "where": "WHERE Impressions > 0",
-            "during": "DURING TODAY",
-            "url": "enter-sheet-url-here",
-            "tabName": "enter-tabname-here",
+            "during": "DURING " + startDate + "," + properlyFormattedTodayDate,
+            "url": "enter-sheet-url-here", // Add your URL Here
+            "tabName": "enter-tabname-here", // Add your tab name here
         },
     ];
 
